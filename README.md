@@ -1,3 +1,57 @@
+## Setup Instructions
+- clone repo
+- npm install
+- npm build
+- add DATABASE_URL to .env file
+- npm start
+
+Navigate to http://localhost:4000 to enter query playground.
+
+## Implementation Details
+I have placed the main application code underneath an src directory.
+
+I separated the client and server into two different files for later customization.
+
+If the resolvers and / or typedefs got any larger, I might also separate those out into separate files.
+
+I prefer more files with less code, as opposed to the reverse.
+
+I created a schema in Prisma with relations and constraints supporting the requirements.
+
+There are 3 models in this schema, User, FriendRequest, and Friendship.
+
+A user has basic user details, a friend request has a status, sender, and receiver, and a friendship consists of a user and that user's friend.
+
+The constraints assured uniqueness of specific data.
+
+One constraint added directly into the schema was bidirectional uniqueness of friendships. This ensured that if user A was friends with user B, user B could not also be friends with user A.
+
+I added test cases with jest.
+
+## Additional Testing
+I added testing for the following cases
+- creating a user
+- fetching all friendships
+- fetching all friend requests
+- fetching users by phone number
+
+If I had more time, I would test the following cases:
+- fetching a user's friends
+- fetching all users
+- confirming a friend request
+- confirming a friend request when there is no request found
+- confirming a friend request when the status of that request is not PENDING
+- rejecting a friend request
+- rejecting a friend request when there is no request found
+- rejecting a friend request when the request has already been rejected
+- rejecting a friend request that has been accepted
+- sending a friend request
+- sending a friend request to a user that is already a friend
+- sending a friend request to a user that already has one pending or accepted
+- sending a friend request to a user that has already been rejected
+
+## Original Assignment Below
+
 ## Your Fav Homework Assignment
 
 #### Background

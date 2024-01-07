@@ -66,7 +66,7 @@ const mockFriendrequests = [
 ];
 
 describe('Query and Mutations tests', () => {
-  it('fetches users', async () => {
+  it('create user', async () => {
     mockCtx.prisma.user.create.mockResolvedValue(mockUsers[0]);
     await expect(resolvers.Mutation.createUser(null, mockUsers[0], ctx)).resolves.toEqual({
       id: 1,
